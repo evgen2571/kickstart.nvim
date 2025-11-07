@@ -200,6 +200,9 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+vim.keymap.set("n", "<A-\\>", ":vsplit<CR><C-w>w", { noremap = true, silent = true, desc = "vertical split" })
+vim.keymap.set("n", "<A-k>", ":q<CR>", { noremap = true, silent = true, desc = "kill window" })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -942,7 +945,7 @@ require("lazy").setup({
 				-- ...
 			})
 
-			vim.cmd("colorscheme moonfly")
+			vim.cmd("colorscheme wildcharm")
 		end,
 	},
 
@@ -1040,7 +1043,7 @@ require("lazy").setup({
 	--
 	require("kickstart.plugins.debug"),
 	require("kickstart.plugins.indent_line"),
-	require("kickstart.plugins.lint"),
+	-- require("kickstart.plugins.lint"),
 	require("kickstart.plugins.autopairs"),
 	-- require 'kickstart.plugins.neo-tree',
 	require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
