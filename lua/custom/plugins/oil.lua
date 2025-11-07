@@ -3,9 +3,22 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("oil").setup({
+			default_file_explorer = true,
+			delete_to_trash = false,
+			skip_confirm_for_simple_edits = true,
 			columns = { "icon" },
 			keymaps = { ["<C-h>"] = false },
-			view_options = { show_hidden = true },
+			watch_for_changes = true,
+			view_options = {
+				show_hidden = true,
+				natural_order = true,
+				is_always_hidden = function(name, _)
+					return name == ".." or name == ".git" or name == ".cache" or name == "compile_commands.json"
+				end,
+			},
+			win_options = {
+				wrap = true,
+			},
 		})
 
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Oil" })
